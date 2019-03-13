@@ -1,0 +1,15 @@
+
+body {
+	background-color: red;
+}
+
+header {
+	margin-bottom: 2rem;
+}
+
+.input-group>.input-group-prepend {
+    flex: 0 0 12%;
+}
+.input-group .input-group-text {
+    width: 100%;
+}
