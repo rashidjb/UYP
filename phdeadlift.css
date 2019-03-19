@@ -11,8 +11,12 @@ header {
 	margin-bottom: 1.5rem;
 }
 .input-group>.input-group-prepend {
-    flex: 0 0 12%;
+	flex: 0 0 12%;
 }
 .input-group .input-group-text {
-    width: 100%;
+	width: 100%;
+}
+
+footer {
+	bottom: 0px;
 }
