@@ -8,8 +8,8 @@ class Workout extends React.Component{
 	render() {
 		console.log(total_reps[this.props.week -1]);
 		return(
-			<table className="table workout_table">
-			  <thead>
+			<table className="table workout_table table-bordered">
+			  <thead className="thead-dark">
 				<tr>
 				  <th scope="col">Exercise</th>
 				  <th scope="col">Weight</th>
@@ -173,10 +173,18 @@ home();
 
 let week = function(week_number){
 	//console.log("week_1")
-	ReactDOM.render(
-        <Week week={week_number} days={[1, 2, 3]}/>,
+	let day_number = ((week_number - 1)*3)
+	if(week_number === 10){
+		ReactDOM.render(
+        <Week week={week_number} days={[day_number+1, day_number+2,]}/>,
         document.getElementById('content')
       );
+	}else {
+		ReactDOM.render(
+			<Week week={week_number} days={[day_number+1, day_number+2, day_number+3]}/>,
+			document.getElementById('content')
+		  );
+	}
 }
 
 	  
