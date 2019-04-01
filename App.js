@@ -3,10 +3,12 @@ const workout_a = ["Squat", "Bench Press", "Chin-ups"];
 const workout_b = ["OH Press", "Deadlift", "Abs"];
 const percents = [65.0, 70.0, 75.0, 80.0, 82.5, 85.0, 87.5, 90.0, 92.5, 95.0];
 const total_reps = [36, 30, 24, 18, 15, 12, 9, 6, 6, 6];
+let maxes = {test: "test", };
+
 
 class Workout extends React.Component{
 	render() {
-		console.log(total_reps[this.props.week -1]);
+		//console.log(total_reps[this.props.week -1]);
 		return(
 			<table className="table workout_table table-bordered">
 			  <thead className="thead-dark">
@@ -57,22 +59,26 @@ class Day extends React.Component{
     }
 }
 
-class ExerciseMax extends React.Component{
-	render() {
-		return(
-			<li className="list-group-item">
-				<div className="input-group">
-				  <div className="input-group-prepend">
-					<span className="input-group-text">{this.props.exercise}:</span>
-				  </div>
-				  <input type="text" className="form-control" placeholder="100" />
-				  <div className="input-group-append">
-					<span className="input-group-text">KG/LBS</span>
-				  </div>
-				</div>
-			</li>
-		);
-	}
+function ExerciseMax(props){
+	const [max, setMax] = React.useState({[props.exercise]: 0});
+	React.useEffect(() => {
+    maxes[props.exercise] = max[props.exercise];
+  });
+  console.log(max);
+  console.log(props.exercise);
+	return(
+		<li className="list-group-item">
+			<div className="input-group">
+			  <div className="input-group-prepend">
+				<span className="input-group-text">{props.exercise}:</span>
+			  </div>
+			  <input type="text" className="form-control" placeholder="100" onChange={e => setMax(e.target.value)}/>
+			  <div className="input-group-append">
+				<span className="input-group-text">KG/LBS</span>
+			  </div>
+			</div>
+		</li>
+	);
 }
 class Maxes extends React.Component{
 	
@@ -161,6 +167,7 @@ class Week extends React.Component{
 		);
 	}
 }
+
 
 let home = function(){
 	ReactDOM.render(
